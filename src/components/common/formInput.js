@@ -11,7 +11,7 @@ import {
   Input
 } from 'native-base';
 
-export default class FormEx extends Component {
+export default class FormInput extends Component {
   render() {
     return (
       <View>
