@@ -2,6 +2,7 @@ import React from 'react';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { StyleSheet, Text, View } from 'react-native';
 import thunk from 'redux-thunk';
+import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
 import SubmitButton from './src/components/common/submitButton';
 import FormInput from './src/components/common/formInput';
@@ -11,7 +12,7 @@ import toDoReducer from './src/reducers/todoReducer';
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(toDoReducer);
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -32,3 +33,5 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
 });
+
+export default connect()(App)
