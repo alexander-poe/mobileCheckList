@@ -1,15 +1,26 @@
 import React from 'react';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { StyleSheet, Text, View } from 'react-native';
-import SubmitButton from './src/components/common/button';
-import FormEx from './src/components/common/input';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import SubmitButton from './src/components/common/submitButton';
+import FormInput from './src/components/common/formInput';
+import ToDoCard from './src/components/common/toDoCard'
+import toDoReducer from './src/reducers/todoReducer';
+
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStoreWithMiddleware(toDoReducer);
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <FormEx />
-        <SubmitButton />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <FormInput/>
+          <SubmitButton />
+          <ToDoCard />
+        </View>
+      </Provider>
     );
   }
 }
