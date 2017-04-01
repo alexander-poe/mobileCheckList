@@ -12,7 +12,6 @@ export default class SubmitButton extends React.Component {
     return (
       <View>
         <Button
-          onPress={this.submit.bind(this)}
           full>
           <Text> Submit </Text>
         </Button>

@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes';
+import * as actions from '../actions/addTodo';
 
 const initialState = {
   todos: []
@@ -6,10 +6,10 @@ const initialState = {
 
 export default function toDoReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case types.ADDTODO:
+    case actions.ADDTODO:
       return {
         ...state,
-        todo
+        todos: action.todo
       };
     default:
       return state;
